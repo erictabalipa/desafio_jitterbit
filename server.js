@@ -10,11 +10,8 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect("mongodb://localhost:27017/jitterbit", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-    .then(() => console.log("MongoDB conectado!"))
+mongoose.connect("mongodb://localhost:27017/jitterbit")
+    .then(() => console.log("MongoDB conectado"))
     .catch(err => console.log(err));
 
 app.use("/", orderRoutes);
