@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 
 const orderRoutes = require("./routes/orderRoutes");
+const { swaggerUi, specs } = require("./swagger");
 
 const app = express();
 
@@ -15,6 +16,8 @@ mongoose.connect("mongodb://localhost:27017/jitterbit")
     .catch(err => console.log(err));
 
 app.use("/", orderRoutes);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(specs));
 
 app.listen(3000, () => {
     console.log("Servidor rodando na porta 3000.");

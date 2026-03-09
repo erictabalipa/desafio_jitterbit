@@ -19,6 +19,7 @@ Este projeto foi desenvolvido como parte do **Desafio Técnico da Jitterbit**.
 * Body-parser
 * Cors
 * Nodemon (dev)
+* Swagger (Documentação API)
 
 ---
 
@@ -189,7 +190,11 @@ DELETE /order/v10089016vdb
 | Erro interno          | 500    |
 
 ---
+# 📂 Documentação API (Swagger) disponível em:
 
+http://localhost:3000/api-docs
+
+---
 # 🧪 Testando a API
 
 A API pode ser testada utilizando:
