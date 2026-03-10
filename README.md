@@ -20,6 +20,7 @@ Este projeto foi desenvolvido como parte do **Desafio Técnico da Jitterbit**.
 * Cors
 * Nodemon (dev)
 * Swagger (Documentação API)
+* JWT Authetication (Autenticação via token)
 
 ---
 
@@ -30,12 +31,17 @@ desafio_jitterbit
 │
 ├── controllers
 │   └── orderController.js
+|   └── authController.js
 │
 ├── models
 │   └── Order.js
+|
+├── middleware
+│   └── authMiddleware.js
 │
 ├── routes
 │   └── orderRoutes.js
+|   └── authRoutes.js
 │
 ├── server.js
 ├── package.json
@@ -99,6 +105,21 @@ Servidor iniciará em:
 
 ```
 http://localhost:3000
+```
+
+---
+
+# 🔐 Autenticação
+
+## Esta API utiliza autenticação JWT.
+```
+
+1. Realize login em /login
+```
+
+```
+
+2. Utilize o token no header Authorization
 ```
 
 ---

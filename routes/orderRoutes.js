@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const controller = require("../controllers/orderController");
+const authMiddleware = require("../middleware/authMiddleware");
 
 //ROTAS DE PEDIDOS PARA API
 
@@ -12,6 +13,8 @@ const controller = require("../controllers/orderController");
  *   post:
  *     summary: Criar um novo pedido
  *     tags: [Pedidos]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -40,7 +43,7 @@ const controller = require("../controllers/orderController");
  *       201:
  *         description: Pedido criado com sucesso
  */
-router.post("/order", controller.createOrder);
+router.post("/order", authMiddleware, controller.createOrder);
 
 //ROTA PARA CONSULTAR PEDIDO
 /**
@@ -49,6 +52,8 @@ router.post("/order", controller.createOrder);
  *   get:
  *     summary: Buscar pedido por ID
  *     tags: [Pedidos]
+ *     security:
+ *       - bearerAuth: []
  *     parameters:
  *       - in: path
  *         name: id
@@ -61,7 +66,7 @@ router.post("/order", controller.createOrder);
  *       404:
  *         description: Pedido não encontrado
  */
-router.get("/order/:id", controller.getOrder);
+router.get("/order/:id", authMiddleware, controller.getOrder);
 
 //ROTA PARA LISTAR PEDIDOS
 /**
@@ -70,11 +75,13 @@ router.get("/order/:id", controller.getOrder);
  *   get:
  *     summary: Listar todos os pedidos
  *     tags: [Pedidos]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
  *         description: Lista de pedidos
  */
-router.get("/order/list", controller.listOrders);
+router.get("/order/list", authMiddleware, controller.listOrders);
 
 //ROTA PARA EDITAR PEDIDO
 /**
@@ -83,8 +90,10 @@ router.get("/order/list", controller.listOrders);
  *   put:
  *     summary: Atualizar pedido
  *     tags: [Pedidos]
+ *     security:
+ *       - bearerAuth: []
  */
-router.put("/order/:id", controller.updateOrder);
+router.put("/order/:id", authMiddleware, controller.updateOrder);
 
 //ROTA PARA DELETAR PEDIDO
 /**
@@ -93,7 +102,9 @@ router.put("/order/:id", controller.updateOrder);
  *   delete:
  *     summary: Deletar pedido
  *     tags: [Pedidos]
+ *     security:
+ *       - bearerAuth: []
  */
-router.delete("/order/:id", controller.deleteOrder);
+router.delete("/order/:id", authMiddleware, controller.deleteOrder);
 
 module.exports = router;
